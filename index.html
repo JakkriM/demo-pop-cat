@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./images/open.png" />
+
+    <title>POPCAT</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="card">
+      <img id="Nametag" src="./images/Nametag.svg" alt="" />
+      <div id="score"></div>
+      <img id="imgCat" src="" alt="popcat" />
+    </div>
+    <button class="btnrefresh" onclick="btnrefresh()">
+      <img src="./images/refresh.png" alt="btnrefresh" />
+    </button>
+
+    <button class="time" id="time"><img src="./images/thetime.png" alt="time" /></button>
+
+    <div class="showtime" id="showtime"></div>
+
+    <div class="timepop" id="timepop">
+      <div class="timepop-inner">
+        <img id="X" src="./images/x.jpg" alt="X">
+        <h2>Challenge</h2>
+        <p>You have <b>30</b> seconds.</p>
+        <button id="timestart" onclick="starttime()">Start</button>
+      </div>
+    </div>
+
+    <div class="endtimepop" id="endtimepop">
+      <div class="endtimepop-inner">
+        <h2>You Score</h2>
+        <h3 id="showscore"></h3>
+        <button id="endchallenge">Close</button>
+      </div>
+    </div>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
