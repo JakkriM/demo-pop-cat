@@ -1,6 +1,7 @@
 
 html{
   font-family: "Rubik", sans-serif;
+  overflow: hidden;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 
 .card #Nametag {
   width: 450px;
-  margin-top: 32px;
+  padding-top: 32px;
 }
 
 .card #score {
@@ -41,7 +42,7 @@ body {
 
 .card #imgCat {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 #score.active {
