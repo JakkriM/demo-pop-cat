@@ -3,43 +3,285 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="./images/open.png" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Rubik:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/webp" href="./images/open.webp" />
     <title>POPCAT</title>
-    <link rel="stylesheet" href="main.css" />
+    <style>
+      html {
+        font-family: "Rubik", sans-serif;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: url(./images/bglogin.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 0;
+        width: 350px;
+        height: 175px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      form input {
+        margin: 10px;
+        width: 300px;
+        height: 50px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 20px;
+        padding: 0;
+        border-style: double;
+        font-weight: 600;
+      }
+      form input.notext {
+        background-color: rgb(255, 222, 222);
+        border-color: red;
+        border-style: solid;
+        border-width: 2px;
+        animation: shake 0.5s;
+        animation-iteration-count: initial;
+        background-image: url(./images/exclamation.png);
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: 98%;
+      }
+
+      form input:focus {
+        background-color: white;
+        background-image: none;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: translate(1px, 1px) rotate(0deg);
+        }
+        10% {
+          transform: translate(-1px, -2px) rotate(-1deg);
+        }
+        20% {
+          transform: translate(-3px, 0px) rotate(1deg);
+        }
+        30% {
+          transform: translate(3px, 2px) rotate(0deg);
+        }
+        40% {
+          transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+          transform: translate(-1px, 2px) rotate(-1deg);
+        }
+        60% {
+          transform: translate(-3px, 1px) rotate(0deg);
+        }
+        70% {
+          transform: translate(3px, 1px) rotate(-1deg);
+        }
+        80% {
+          transform: translate(-1px, -1px) rotate(1deg);
+        }
+        90% {
+          transform: translate(1px, 2px) rotate(0deg);
+        }
+        100% {
+          transform: translate(1px, -2px) rotate(-1deg);
+        }
+      }
+
+      .btn {
+        width: 300px;
+        height: 50px;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 0;
+        border-style: hidden;
+        background-color: rgb(51, 51, 51);
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .listscore {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 350px;
+        height: 400px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .listscore .titlename {
+        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+      }
+      .listscore .titlename h1 {
+        font-size: 25px;
+      }
+
+      .listscore .history {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        color: #000000;
+        font-weight: 400;
+        align-items: center;
+      }
+      .history img {
+        width: 30px;
+        margin-top: 5px;
+        margin-left: 20px;
+      }
+      .setName {
+        width: 50%;
+        text-align: left;
+        margin-left: 20px;
+      }
+      .setScore {
+        width: 20%;
+        text-align: right;
+        margin-right: 20px;
+      }
+      .setDate {
+        width: 80%;
+        text-align: center;
+        margin-right: 20px;
+      }
+
+      .btnhistory {
+        z-index: 998;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        margin: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        cursor: pointer;
+      }
+
+
+    
+
+    </style>
   </head>
   <body>
-    <div class="card">
-      <img id="Nametag" src="./images/Nametag.svg" alt="" />
-      <div id="score"></div>
-      <img id="imgCat" src="" alt="popcat" />
-    </div>
-    <button class="btnrefresh" onclick="btnrefresh()">
-      <img src="./images/refresh.png" alt="btnrefresh" />
-    </button>
+    <div id="overlay">
 
-    <button class="time" id="time"><img src="./images/thetime.png" alt="time" /></button>
+      <div class="listscore">
+        <div class="titlename">
+          <h1>LEADERBOARD</h1>
+        </div>
+        <div class="history">
+          <div class=""><img src="./images/champ.png" alt="" /></div>
+          <div class="setName"><b>Name</b></div>
+          <div class="setScore"><b>Score</b></div>
+          <div class="setDate"><b>Date Time</b></div>
+        </div>
 
-    <div class="showtime" id="showtime"></div>
-
-    <div class="timepop" id="timepop">
-      <div class="timepop-inner">
-        <img id="X" src="./images/x.jpg" alt="X">
-        <h2>Challenge</h2>
-        <p>You have <b>30</b> seconds.</p>
-        <button id="timestart" onclick="starttime()">Start</button>
+        <div class="history">
+          <div><img src="./images/1.png" alt="" /></div>
+          <div class="setName" id="setName1"></div>
+          <div class="setScore" id="setScore1"></div>
+          <div class="setDate" id="setDate1"></div>
+        </div>
+        <div class="history">
+          <div><img src="./images/2.png" alt="" /></div>
+          <div class="setName" id="setName2"></div>
+          <div class="setScore" id="setScore2"></div>
+          <div class="setDate" id="setDate2"></div>
+        </div>
+        <div class="history">
+          <div><img src="./images/3.png" alt="" /></div>
+          <div class="setName" id="setName3"></div>
+          <div class="setScore" id="setScore3"></div>
+          <div class="setDate" id="setDate3"></div>
+        </div>
+        <div class="history">
+          <div><img src="./images/4.png" alt="" /></div>
+          <div class="setName" id="setName4"></div>
+          <div class="setScore" id="setScore4"></div>
+          <div class="setDate" id="setDate4"></div>
+        </div>
+        <div class="history">
+          <div><img src="./images/5.png" alt="" /></div>
+          <div class="setName" id="setName5"></div>
+          <div class="setScore" id="setScore5"></div>
+          <div class="setDate" id="setDate5"></div>
+        </div>
       </div>
+
+    
+
+      <form action="popcat.html?name=Youname" onsubmit="return checkInput()">
+        <input
+          type="text"
+          id="Youname"
+          name="Youname"
+          placeholder="Your Name"
+          maxlength="8"
+        />
+        <button class="btn">Enter</button>
+      </form>
     </div>
+    <script>
+      calAPI();
+      function checkInput() {
+        let name = document.getElementById("Youname");
+        if (name.value == "") {
+          name.classList.add("notext");
+          return false;
+        }
+      }
 
-    <div class="endtimepop" id="endtimepop">
-      <div class="endtimepop-inner">
-        <h2>You Score</h2>
-        <h3 id="showscore"></h3>
-        <button id="endchallenge">Close</button>
-      </div>
-    </div>
+      function calAPI() {
+        fetch(
+          `https://script.google.com/macros/s/AKfycbxG8DGsXm7hxJS61AUHAP1drK3qhZmfv6YMB2tNDuora-HqwDIxS1TJN9Z0QqFqugNU_w/exec`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            data.user.sort((a, b) => a.score - b.score).reverse();
 
-
-    <script src="script.js"></script>
+            for (let i = 0; i < 5; i++) {
+              document.getElementById(`setName${i + 1}`).innerHTML =
+                data.user[i].name;
+              document.getElementById(`setScore${i + 1}`).innerHTML =
+                data.user[i].score;
+              document.getElementById(`setDate${i + 1}`).innerHTML = data.user[
+                i
+              ].date.slice(1, -1);
+            }
+          })
+          .catch((error) => {
+            console.log("เกิดข้อผิดพลาด: " + error);
+          });
+      }
+    </script>
   </body>
 </html>

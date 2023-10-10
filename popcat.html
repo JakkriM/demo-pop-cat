@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="./images/open.webp" />
+
+    <title>POPCAT</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="poplogin">
+      <div class="poplogin-inner"></div>
+    </div>
+    <div class="card" id="card">
+      <img id="Nametag" src="./images/Nametag.svg" alt="" />
+      <div id="score"></div>
+      <img id="imgCat" src="" alt="popcat" />
+    </div>
+    <button class="btnrefresh" onclick="btnrefresh()">
+      <img src="./images/refresh.png" alt="btnrefresh" />
+    </button>
+
+    <a href="index.html">
+      <button class="logout">
+        <img src="./images/logout.png" alt="time" />
+      </button>
+    </a>
+
+    <button class="time" id="time">
+      <img src="./images/thetime.png" alt="time" />
+    </button>
+
+    <div class="showtime" id="showtime"></div>
+
+    <div class="timepop" id="timepop">
+      <div class="timepop-inner">
+        <img id="X" src="./images/x.webp" alt="X" />
+        <h2>Challenge</h2>
+        <p>You have <b>30</b> seconds.</p>
+        <button id="timestart" onclick="starttime()">Start</button>
+      </div>
+    </div>
+
+    <div class="endtimepop" id="endtimepop">
+      <div class="endtimepop-inner">
+        <h2>Your Score</h2>
+        <h3 id="showscore"></h3>
+        <button id="endchallenge">Close</button>
+      </div>
+    </div>
+
+    <div class="blackBG" id="blackBG"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

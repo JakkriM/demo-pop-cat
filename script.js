@@ -1,69 +1,131 @@
 let time;
 let num;
+let Numberscore = 0;
+let opacitynumber = 0;
 const pop = document.querySelector("body");
 const cat = document.querySelector("#imgCat");
 const score = document.querySelector("#score");
 const name = document.getElementById("Nametag");
 const soundPOP = new Audio("./sound/pop-cat-original-meme_3ObdYkj.mp3");
-localStorage.clickcount = 0; 
+const blackBG = document.querySelector("blackBG");
 
-pop.addEventListener("mousedown", () => {
+const soundV2 = new Audio("./sound/soundV2.mp3");
+const soundV3 = new Audio("./sound/soundV3.mp3");
+const soundV4 = new Audio("./sound/soundV4.mp3");
+const soundV5 = new Audio("./sound/soundV5.mp3");
+
+// const pop = document.getElementById("card");
+
+pop.addEventListener("pointerdown", () => {
   document.getElementById("score").classList.add("active");
   openMouse();
 });
 
-pop.addEventListener("mouseup", () => {
+pop.addEventListener("pointerup", () => {
   document.getElementById("score").classList.remove("active");
   closeMouse();
 });
 
-document.getElementById("score").innerHTML = localStorage.clickcount;
+document.getElementById("score").innerHTML = Numberscore;
 
-if (localStorage.clickcount < 100) {
-  cat.src = "./images/colse.png";
-} else {
-  cat.src = "./images/closeV2.png";
-  document.body.style.backgroundImage =
-    "url('https://t4.ftcdn.net/jpg/03/08/66/67/360_F_308666761_bTFYmPovStrp8LlHRBpq2n4tlk61YjE0.jpg')";
+chackclose();
+
+function chackclose() {
+  if (Numberscore < 100) {
+    cat.src = "./images/close.webp";
+    document.body.style.backgroundImage = "url(./images/bg.webp)";
+  } else if (Numberscore < 150) {
+    cat.src = "./images/closeV2.webp";
+    document.body.style.backgroundImage = "url(./images/bgV2.webp)";
+    soundV2.play();
+  } else if (Numberscore < 200) {
+    cat.src = "./images/closeV3.webp";
+    document.body.style.backgroundImage = "url(./images/bgV3.webp)";
+    soundV3.play();
+  } else if (Numberscore < 300) {
+    cat.src = "./images/closeV4.webp";
+    document.body.style.backgroundImage = "url(./images/bgV4.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0";
+    soundV4.play();
+  } else if (Numberscore < 310) {
+    cat.src = "./images/closeV4.webp";
+    document.body.style.backgroundImage = "url(./images/bgV4.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.2";
+  } else if (Numberscore < 320) {
+    cat.src = "./images/closeV4.webp";
+    document.body.style.backgroundImage = "url(./images/bgV4.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.4";
+  } else if (Numberscore < 330) {
+    cat.src = "./images/closeV4.webp";
+    document.body.style.backgroundImage = "url(./images/bgV4.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.6";
+  } else if (Numberscore < 340) {
+    cat.src = "./images/closeV4.webp";
+    document.body.style.backgroundImage = "url(./images/bgV4.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.8";
+  } else if (Numberscore < 350) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "1";
+  } else if (Numberscore > 400) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.0";
+  } else if (Numberscore > 390) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.2";
+  } else if (Numberscore > 380) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.4";
+  } else if (Numberscore > 370) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.6";
+  } else if (Numberscore > 360) {
+    cat.src = "./images/closeV5.webp";
+    document.body.style.backgroundImage = "url(./images/bgV5.webp)";
+    document.getElementById("blackBG").style.opacity = opacitynumber = "0.8";
+    soundV5.play();
+  }
+}
+
+function chackopen() {
+    cat.src = null;
+  if (Numberscore < 100) {
+    cat.src = "./images/open.webp";
+  } else if (Numberscore < 150) {
+    cat.src = "./images/openV2.webp";
+  } else if (Numberscore < 200) {
+    cat.src = "./images/openV3.webp";
+  } else if (Numberscore < 350) {
+    cat.src = "./images/openV4.webp";
+  } else {
+    cat.src = "./images/openV5.webp";
+  }
 }
 
 function clickMouse() {
-  localStorage.clickcount = Number(localStorage.clickcount) + 1;
-  document.getElementById("score").innerHTML = localStorage.clickcount;
+  Numberscore = Numberscore + 1;
+  document.getElementById("score").innerHTML = Numberscore;
 }
 
 function openMouse() {
   soundPOP.play();
   clickMouse();
-  if (localStorage.clickcount < 100) {
-    cat.src = "./images/open.png";
-  } else {
-    cat.src = "./images/openV2.png";
-  }
+  chackopen();
 }
 
 function closeMouse() {
-  soundPOP.play();
-  if (localStorage.clickcount < 100) {
-    cat.src = "./images/colse.png";
-  } else {
-    cat.src = "./images/closeV2.png";
-    document.body.style.backgroundImage =
-      "url('https://t4.ftcdn.net/jpg/03/08/66/67/360_F_308666761_bTFYmPovStrp8LlHRBpq2n4tlk61YjE0.jpg')";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundSize = "100%";
-  }
+  chackclose();
 }
-
 function btnrefresh() {
-  localStorage.clickcount = 0;
-  document.getElementById("score").innerHTML = localStorage.clickcount;
-  cat.src = "./images/colse.png";
-  document.body.style.backgroundRepeat = "none";
-  document.body.style.backgroundSize = "100%";
-  document.body.style.backgroundImage =
-    "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCAOEAAEDAREAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAgMAAQQFBggH/8QAGgEBAQEBAQEBAAAAAAAAAAAAAgADAQQFBv/aAAwDAQACEAMQAAAA/P8A8191tHqSSYtt+Z6A50c+9Dz69DzLdTGJ1sa6a52dB29B6DXPoak6KhoqmhixiJcrNHAvRKLhLykJeWK+eq+Uz39hyX0bzX01eg0ugbURDxRpwyonKlSpRVRKxxFmA5dENVdWfbTKe1n2YlWk3QO1tHbaYsZasOvcHleajZJElyOtduiz1Z423aaxWfEvlkGZlNozEOPXX1Tlshsk8GNJPeyrDuo+1pxvZxmhO5CTiR5jNejP/8QAKxAAAQEHAgQGAwAAAAAAAAAAABIBAhARExRhFVEDIWKBBBcgMFOSUnGR/9oACAEBAAE/AECISKRTwUMFvkps2LUTFLS2c3LDpLRhYOiRMOfpT6UnIW7uw1zrPOXhfkz7Gp+P6jyte+I0Dhlr0li6U8Qn7KmZOQvJUgkmVBQppImdyngQ0ovbNP5BbMlbJVbBAmKSZ2EnLZgl0UKbkSIEQTCmJFExeRbBTScEwmJKZ2EsJCv2XeC5e+DiGteJ3c+p/8QAHREAAgMBAAMBAAAAAAAAAAAAABEBEBIgAhMhMP/aAAgBAgEBPwCkIUDrQ+FAhGRSLpCp8uByO9QO1BqaZ9/B9fRCgZqKQhRWoHJkcGpM2hCPp7fEcnrk3ApGPhjnhCilyhU6dIVf/8QAGxEAAgMBAQEAAAAAAAAAAAAAABEBECASITD/2gAIAQMBAT8Ay6QpyhnUU50x7Z6K0LLEe/FU5tQIUCH8VIxHU0xXzhHUac4VrPmXTHX/2Q==')";
-
+  Numberscore = 0;
+  document.getElementById("score").innerHTML = Numberscore;
+  cat.src = "./images/close.webp";
+  document.body.style.backgroundImage = "url(./images/bg.webp)";
+  document.getElementById("blackBG").style.opacity = opacitynumber = "0";
   clearInterval(time);
   showtime.innerHTML = null;
 }
@@ -74,16 +136,22 @@ const timepop = document.getElementById("timepop");
 
 opneBtn.addEventListener("click", () => {
   timepop.classList.add("open");
+  document.getElementById("blackBG").style.opacity = opacitynumber = "0.8";
+  document.getElementById("blackBG").style.zIndex = 998;
 });
 
 startBtn.addEventListener("click", () => {
   timepop.classList.remove("open");
+  document.getElementById("blackBG").style.opacity = opacitynumber = "0";
+  document.getElementById("blackBG").style.zIndex = 997;
 });
 
 const btnX = document.getElementById("X");
 
 btnX.addEventListener("click", () => {
   timepop.classList.remove("open");
+  document.getElementById("blackBG").style.zIndex = 997;
+  document.getElementById("blackBG").style.opacity = opacitynumber = "0";
 });
 
 const showtime = document.querySelector("#showtime");
@@ -91,13 +159,13 @@ let ticking = new Audio("./sound/tick.mp3");
 const endchallenge = document.getElementById("endchallenge");
 
 function starttime() {
+  btnrefresh();
   num = 30;
   let sec = 0;
-  localStorage.clickcount = 0;
-  document.getElementById("score").innerHTML = localStorage.clickcount;
+  document.getElementById("score").innerHTML = Numberscore;
   time = setInterval(() => {
     showtime.innerHTML = num + sec;
-    const yourscore = localStorage.clickcount;
+    const yourscore = Numberscore;
     if (sec < -26) {
       showtime.style.color = "red";
     } else if (sec < -20) {
@@ -110,6 +178,9 @@ function starttime() {
       clearInterval(time);
       endtimepop.classList.add("open");
       document.getElementById("showscore").innerHTML = yourscore;
+      document.getElementById("blackBG").style.opacity = opacitynumber = "0.8";
+      document.getElementById("blackBG").style.zIndex = 998;
+      calAPI(yourscore);
     } else {
       ticking.play();
       sec--;
@@ -120,4 +191,36 @@ function starttime() {
 endchallenge.addEventListener("click", () => {
   endtimepop.classList.remove("open");
   btnrefresh();
+  document.getElementById("blackBG").style.opacity = opacitynumber = "0";
+  document.getElementById("blackBG").style.zIndex = 997;
 });
+
+let params = new URLSearchParams(window.location.search);
+let Youname = params.get("Youname");
+// let date = new Date()
+const date = new Date();
+var datetime =
+  ("0" + date.getUTCDate()).slice(-2) +
+  "-" +
+  ("0" + (date.getUTCMonth() + 1)).slice(-2) +
+  "-" +
+  ("0" + (date.getUTCFullYear()+43)).slice(-2) +
+  " " +
+  ("0" + (date.getUTCHours() + 7)).slice(-2) +
+  ":" +
+  ("0" + date.getUTCMinutes()).slice(-2) 
+
+console.log(datetime);
+
+function calAPI(yourscore) {
+  fetch(
+    `https://script.google.com/macros/s/AKfycbxG8DGsXm7hxJS61AUHAP1drK3qhZmfv6YMB2tNDuora-HqwDIxS1TJN9Z0QqFqugNU_w/exec?name=${Youname}&score=${yourscore}&date="${datetime}"`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log("เกิดข้อผิดพลาด: " + error);
+    });
+}
